@@ -85,7 +85,6 @@ jobs:
       # IPAs stay on the runner and must not become public-repository artifacts.
       - name: Publish Unsigned IPA to Fork Release
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         run: |
-          gh release create unsigned-ipa --generate-notes || true
           gh release upload unsigned-ipa artifacts/*.ipa --clobber
