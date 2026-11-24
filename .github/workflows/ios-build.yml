@@ -83,3 +83,10 @@ jobs:
 
       # Compile and package checks are not publication clearance. Full personal
       # IPAs stay on the runner and must not become public-repository artifacts.
+      - name: Upload Unsigned IPA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: HarkinianPad-IPA
+          path: artifacts/*.ipa
+          if-no-files-found: warn
